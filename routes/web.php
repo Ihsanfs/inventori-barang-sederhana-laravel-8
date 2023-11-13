@@ -130,6 +130,16 @@ Route::group(['middleware' => ['auth']], function () {
 
 //hitung data
 Route::get('dashboard', [RekapController::class, 'index']);
+Route::get('hitung_masuk', [RekapController::class, 'masuk'])->name('masuk');
+Route::get('hitung_keluar', [RekapController::class, 'keluar'])->name('keluar');
+Route::get('hitung_kategori', [RekapController::class, 'kategori_hitung'])->name('kategori_hitung');
+Route::get('hitung_user', [RekapController::class, 'user_hitung'])->name('hitung_user');
+Route::get('hitung_barang', [RekapController::class, 'hitung_barang'])->name('hitung_barang');
+
+
+
+
+
 
 
     // gudang akses

@@ -31,6 +31,11 @@ class BrgMskController extends Controller
 
     }
 
+    public function hitung(){
+
+
+    }
+
     public function create(){
         $barang = Barang::all();
 
@@ -61,9 +66,6 @@ class BrgMskController extends Controller
 
         $id = $request->input('id_barang');
         $barang = Barang::where('id', $id)->pluck("harga","id")->first();
-        // $barang = Barang::find('id','harga',$id)->first();
-// return $barang->harga;
-        // dd($barang);
         return response()->json($barang);
 
 
@@ -110,6 +112,7 @@ public function destroy($id){
         'id_barang' => $request->id_barang,
         'id_user' => $request->id_user,
         'jml_brg_masuk' => $request->jml_brg_masuk,
+        'tgl_masuk' => Carbon::now(),
         'total' => $request->total,
         'created_at',
         'updated_at',

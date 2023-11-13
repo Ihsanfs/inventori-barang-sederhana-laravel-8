@@ -22,6 +22,7 @@ class BrgMsk extends Model
         'id_user',
         'jml_brg_masuk',
         'total',
+        'tgl_masuk',
         'created_at',
         'updated_at'
 

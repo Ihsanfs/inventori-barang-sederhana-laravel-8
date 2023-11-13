@@ -41,9 +41,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <input type="button" id="ajaxBtn" value="Send GET request" />
-                            <p>
-                            </p>
+
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover" >
                                     <thead>
@@ -134,10 +132,14 @@
                     kategori
                    </label>
                    <select name="id_kategori"  class="form-control">
-                    <option value="{{$d->id_kategori}}" >nama kategori</option>
-                    @foreach ($kategori as $item)
-                    <option value="{{$item->id}}" >{{$item->nama_kategori}}</option>
-                    @endforeach
+                   <option value="{{ $d->id_kategori }}" {{ $d->id == $d->id_kategori ? 'selected' : '' }}>
+    {{ $d->nama_kategori }}
+</option>
+@foreach ($kategori as $item)
+    <option value="{{ $item->id }}" {{ $item->id == $d->id_kategori ? 'selected' : '' }}>
+        {{ $item->nama_kategori }}
+    </option>
+@endforeach
 
 
 
@@ -149,7 +151,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                     </div>
-                   <input type="number " class="form-control" name="harga" value="{{$d->nama_harga}}">
+                   <input type="number " class="form-control" name="harga" value="{{$d->harga}}">
                 </div>
             </div>
             <div class="form-group">
@@ -157,7 +159,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Unit</span>
                     </div>
-                   <input type="number " class="form-control" name="stok" value="{{$d->nama_stok}}">
+                   <input type="number " class="form-control" name="stok" value="{{$d->stok}}">
                 </div>
             </div>
 
@@ -208,9 +210,6 @@
                     @foreach ($kategori as $item)
                     <option value="{{$item->id}}" >{{$item->nama_kategori}}</option>
                     @endforeach
-
-
-
                       </select>
             </div>
 

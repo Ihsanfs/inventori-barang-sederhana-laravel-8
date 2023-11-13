@@ -8,6 +8,8 @@
 	<link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 	<!-- Fonts and icons -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 	<script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
     <script type="text/javascript"
             src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
@@ -288,7 +290,7 @@
 							<a href="/dashboard">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
-								<span class="badge badge-count">5</span>
+								<span class="badge badge-count"></span>
 							</a>
 						</li>
 
@@ -296,7 +298,7 @@
 							<a href="/kategori">
 								<i class="fas fa-list-ol"></i>
 								<p>Kategori</p>
-								<span class="badge badge-count"></span>
+								<span class="badge badge-count" id="jml_kategori"></span>
 							</a>
 						</li>
                         <li class="nav-item">
@@ -304,7 +306,7 @@
 								<i class="fas fa-cart-plus"></i>
 
 								<p>Barang masuk</p>
-								<span class="badge badge-count">5</span>
+								<span class="badge badge-count" id="jml_masuk"></span>
 							</a>
 						</li>
                         <li class="nav-item">
@@ -312,14 +314,22 @@
 								<i class="fas fa-cart-plus"></i>
 
 								<p>Barang keluar</p>
-								<span class="badge badge-count">5</span>
+								<span class="badge badge-count" id="jml_keluar"></span>
+							</a>
+						</li>
+                        <li class="nav-item">
+							<a href="/barang">
+								<i class="fas fa-cart-plus"></i>
+
+								<p>Barang</p>
+								<span class="badge badge-count" id="jml_barang"></span>
 							</a>
 						</li>
                         <li class="nav-item">
 							<a href="/user">
 								<i class="fas fa-home"></i>
-								<p>Dashboard</p>
-								<span class="badge badge-count">5</span>
+								<p>User</p>
+								<span class="badge badge-count" id="jml_user"></span>
 							</a>
 						</li>
 
@@ -473,6 +483,32 @@ $.ajaxSetup({
         });
     });
 </script> --}}
+<script>
+   $.get("hitung_masuk", function(data) {
+        var jmlBrgMasuk = data.jml_brg_masuk;
+        $('#jml_masuk').text(jmlBrgMasuk);
+    });
+
+    $.get("hitung_keluar", function(data) {
+        var jmlBrgKeluar = data.jml_brg_keluar;
+        $('#jml_keluar').text(jmlBrgKeluar);
+    });
+
+    $.get("hitung_kategori", function(data) {
+        var jmlkategori = data.total_kategoris;
+        $('#jml_kategori').text(jmlkategori);
+    });
+
+    $.get("hitung_user", function(data) {
+        var jmluser = data.total_user;
+        $('#jml_user').text(jmluser);
+    });
+
+    $.get("hitung_barang", function(data) {
+        var jmlbarang = data.total_barang;
+        $('#jml_barang').text(jmlbarang);
+    });
+</script>
 
 
 </body>

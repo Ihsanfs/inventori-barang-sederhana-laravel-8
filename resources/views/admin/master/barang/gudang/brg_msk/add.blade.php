@@ -5,7 +5,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Data kategori</h4>
+                <h4 class="page-title">Data barang masuk</h4>
                 <ul class="breadcrumbs">
                     <li class="nav-home">
                         <a href="#">
@@ -22,7 +22,7 @@
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">kategori</a>
+                        <a href="#">barang masuk</a>
                     </li>
                 </ul>
             </div>
@@ -137,7 +137,11 @@
                 method: 'GET',
                 dataType: "json",
                 success: function(data) {
-                    $('#harga').val(data);
+
+                        $('#harga').val(data);
+
+
+
                 }
             });
         });
@@ -160,125 +164,9 @@
     });
 </script>
 
-{{-- <script type="text/javascript">
-
-
-$( "select" )
-  .change(function () {
-    var str = "";
-    $( "select option:selected" ).each(function() {
-      str += $( this ).text() + " ";
-    });
-    $( '#harga' ).text( str );
-  })
-  .change();
-
-
-</script> --}}
-
-
-{{-- <script type="text/javascript">
-
-
-    $("#id_barang").change(function(){
-        var id_barang = $("#id_barang").val();
-        $.ajax({
-            type : "GET",
-            url : "/brg_msk/proses/",
-            data : "id_barang"+id_barang,
-            cache : false,
-            success : function (data){
-                $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-                $('#location').html(data);
-            }
-        });
-    });
-</script> --}}
-
-
-
-{{-- <script>
-      $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    function isi_otomatis() {
-      var x = document.getElementById("id_barang").value ;
-      document.getElementById("location").innerHTML = "You selected: " + x;
-    }
-    </script> --}}
-
-
-
-{{--
-<script>
-
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    </script> --}}
-     {{-- <script>
-        $('#barang').on('change', function() {
-            getBarang(event.target.value).then(barang => {
-			$('#harga').val(barang.warna);
-
-        });
-        });
-
-        async function getBarang($barang) {
-		let response = await fetch('brg_msk/create' + id)
-		let data = await response.json();
-
-		return data;
-	}
-    </> --}}
-
-
-{{-- <script type="text/javascript">
-    $("#id_barang").change(function(){
-
-        var id_barang = $("id_barang").val();
-        $.ajax({
-            type : "GET",
-            url : "brg_msk/create",
-            data : "id_barang"+id_barang,cache false, success : function (data){
-                $('#harga').html(data);
-            }
-        });
-    });
-</script> --}}
-
-{{-- <script type="text/javascript">
-$.ajax({
-        url: 'brg_msk/create',
-        type: 'GET',
-        success: function(data) {
-            $('#tabeldata').html(data);
-        }
-    });</script> --}}
 
 @endsection
 
-{{-- <script type="text/javascript">
-
-    $(document).ready(function(){
-        $(#jml_brg_msk).keyup(function()
-        {
-            var jml_brg_msk = $("#jml_brg_msk").val();
-            var harga = $("#harga").val();
-            var total  = parseInt(harga) * parseInt(jml_brg_msk);
-            $("#total").val(total);
-        }
-        );
-    });
-</script> --}}
 
 
 

@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\BrgKeluar;
 use App\Models\BrgMsk;
+use App\Models\Kategori;
+
 use App\Models\User;
 use Illuminate\Http\Request;
+
 
 class RekapController extends Controller
 {
@@ -78,4 +81,32 @@ class RekapController extends Controller
             'tglkl'
     ));
     }
+
+    public function masuk() {
+        $total_brg_masuk = BrgMsk::sum('jml_brg_masuk');
+
+        return response()->json(['jml_brg_masuk' => $total_brg_masuk]);
+    }
+
+    public function keluar() {
+        $total_brg_keluar = BrgKeluar::sum('jml_brg_keluar');
+
+        return response()->json(['jml_brg_keluar' => $total_brg_keluar]);
+    }
+
+    public function kategori_hitung() {
+        $total_kategoris = Kategori::count();
+        return response()->json(['total_kategoris' => $total_kategoris]);
+    }
+
+    public function user_hitung() {
+        $total_user = User::count();
+        return response()->json(['total_user' => $total_user]);
+    }
+
+    public function hitung_barang() {
+        $total_barang = Barang::count();
+        return response()->json(['total_barang' => $total_barang]);
+    }
+
 }
