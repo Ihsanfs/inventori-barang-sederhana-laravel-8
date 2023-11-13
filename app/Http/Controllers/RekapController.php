@@ -20,9 +20,12 @@ class RekapController extends Controller
         $brgkeluar = BrgKeluar::count();
 
         $date = date('Y-m-d');
-        $tglmsk = BrgMsk::where('created_at', '=' ,$date)->count();
-        $tglkl = BrgKeluar::where('created_at', '=' ,$date)->count();
+        // $tglmsk = BrgMsk::whereday('created_at')->count();
+        $tglmsk = BrgMsk::whereDay('created_at', now()->day)->count();
 
+        $tglkl = BrgKeluar::whereDay('created_at', now()->day)->count();
+
+        // dd($tglkl);
         $jan = BrgMsk::whereMonth('created_at', '01')->count();
         $feb = BrgMsk::whereMonth('created_at', '02')->count();
         $mar = BrgMsk::whereMonth('created_at', '03')->count();
